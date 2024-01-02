@@ -1,11 +1,6 @@
 <script setup>
+import Card from "@/components/Card.vue";
 
-import Card from "./Card.vue";
-
-
-const onClick = ()=>{
-  alert(222)
-}
 </script>
 
 <template>
@@ -14,10 +9,6 @@ const onClick = ()=>{
     :is-added="true" :is-favorite="true"
     :on-click-add="onClick"
     />
-    <Card/>
-    <Card/>
-    <Card/>
-    <Card/>
   </div>
 </template>
 
