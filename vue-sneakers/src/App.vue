@@ -1,7 +1,13 @@
 <script setup>
+import {onMounted} from "vue";
 import Header from "@/components/Header.vue";
 import CardList from "@/components/CardList.vue";
 import Drawer from "@/components/Drawer.vue";
+
+
+onMounted(()=>{
+
+})
 </script>
 
 <template>
@@ -31,8 +37,9 @@ import Drawer from "@/components/Drawer.vue";
 
       </div>
 
-
-      <CardList/>
+      <div class="mt-10">
+        <CardList :items="items"/>
+      </div>
     </div>
 
   </div>
