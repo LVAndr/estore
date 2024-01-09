@@ -15,7 +15,7 @@ defineProps({
     v-for="item in items"
     :key="item.id"
         :title="item.title" :price="item.price" :image-url="item.imageUrl"
-    :is-added="true"
+    :is-favorite="item.isFavorite"
     />
 <!--    :is-added="true" :is-favorite="true" :on-click-add="onClick"-->
   </div>
