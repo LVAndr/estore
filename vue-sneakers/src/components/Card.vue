@@ -1,5 +1,8 @@
 <script setup>
+
+
 defineProps({
+  id: Number,
   title: String,
   imageUrl: String,
   price: Number,
@@ -9,8 +12,6 @@ defineProps({
   onClickFavorite: Function,
 
 })
-
-
 </script>
 
 <template>
