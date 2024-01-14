@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted, ref, reactive, watch, provide} from "vue";
+import {onMounted, ref, reactive, watch, provide, computed} from "vue";
 import axios from "axios";
 
 import Header from "@/components/Header.vue";
@@ -18,6 +18,13 @@ const closeDrawer = () =>{
 const openDrawer = () =>{
   drawerOpen.value = true;
 }
+
+const totalPrice = computed(
+    ()=> cart.value.reduce((acc, item)=> acc + item.price, 0)
+)
+const vatPrice = computed(
+    ()=> Math.round(( totalPrice.value * 5) / 100)
+);
 
 const filters = reactive({
   sortBy:'title',
@@ -38,7 +45,6 @@ const onClickAddPlus = (item) => {
   }else{
     removeFromCart(item);
   }
-  console.log(cart)
 }
 
 const onChangeSelect = (event) =>{
@@ -139,9 +145,9 @@ provide('cart', {
 </script>
 
 <template>
-  <Drawer v-if="drawerOpen"/>
+  <Drawer v-if="drawerOpen" :total-price="totalPrice" :vat-price="vatPrice" />
   <div class="bg-white w-4/5	m-auto rounded-xl shadow-xl mt-14">
-    <Header @open-drawer="openDrawer"/>
+    <Header :total-price="totalPrice" @open-drawer="openDrawer"/>
 
     <div class="p-10">
       <div class="flex justify-between items-center">
